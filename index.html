@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎉 Feliz Cumpleaños Atrasado 🎂</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Open Sans', sans-serif;
+      background: linear-gradient(to bottom, #ffe4e1, #fff8f0);
+      text-align: center;
+      overflow-x: hidden;
+    }
+    header {
+      padding: 1rem;
+    }
+    header h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 2rem;
+      color: #e75480;
+      margin: 1rem 0 0.5rem;
+      animation: fadeIn 2s ease-in-out;
+    }
+    .hero-image {
+      width: 90%;
+      max-width: 340px;
+      border-radius: 1.2rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      margin: 1rem auto;
+      display: block;
+      animation: popIn 1.5s ease-out;
+    }
+    .mensaje-corto {
+      margin: 0 auto 2rem;
+      width: 90%;
+      background: #fff0f5;
+      padding: 1.2rem;
+      border-radius: 0.8rem;
+      font-size: 1rem;
+      color: #444;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      animation: slideUp 1.5s ease-in-out;
+    }
+    .heart, .confetti {
+      position: absolute;
+      opacity: 0.7;
+    }
+    .heart {
+      width: 14px;
+      height: 14px;
+      background: #ff6f91;
+      transform: rotate(45deg);
+      animation: floatUp 6s ease-in infinite;
+    }
+    .confetti {
+      width: 10px;
+      height: 10px;
+      background-color: #fcd;
+      border-radius: 50%;
+      animation: fallDown 5s linear infinite;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) rotate(45deg); opacity: 1; }
+      100% { transform: translateY(-600px) rotate(45deg); opacity: 0; }
+    }
+
+    @keyframes fallDown {
+      0% { transform: translateY(-10px); opacity: 1; }
+      100% { transform: translateY(100vh); opacity: 0; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0.5); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      0% { transform: translateY(100px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🎂 ¡Feliz Cumpleaños Atrasado! 🎈</h1>
+    <img src="1.jpg" alt="Foto de nosotros" class="hero-image">
+  </header>
+
+  <div class="mensaje-corto">
+    <p>Aunque no hemos compartido tanto, quiero que sepas que eres una persona increible. ¡TQM! 💖</p>
+  </div>
+
+  <script>
+    window.onload = () => {
+      generarCorazones();
+      generarConfetti();
+    };
+
+    function generarCorazones() {
+      for (let i = 0; i < 10; i++) crearElemento("heart", floatUp);
+      setInterval(() => crearElemento("heart", floatUp), 800);
+    }
+
+    function generarConfetti() {
+      for (let i = 0; i < 20; i++) crearElemento("confetti", fallDown);
+      setInterval(() => crearElemento("confetti", fallDown), 500);
+    }
+
+    function crearElemento(clase, animacion) {
+      const el = document.createElement("div");
+      el.className = clase;
+      el.style.left = Math.random() * window.innerWidth + "px";
+      el.style.animationDuration = (3 + Math.random() * 3) + "s";
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 7000);
+    }
+
+    function floatUp() {}
+    function fallDown() {}
+  </script>
+</body>
+</html>
